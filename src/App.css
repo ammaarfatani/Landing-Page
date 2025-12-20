@@ -322,7 +322,10 @@ background: #F2F2F2;
    -3px -3px 1px rgb(255, 255, 255);
   transition: transform 0.25s ease;
   margin-top: 25px;
+  will-change: transform, opacity;
+
 }
+
 
 .feature-card:hover {
   transform: translateY(-6px);
@@ -376,6 +379,14 @@ background: #F2F2F2;
   padding: 80px 20px;
   font-family: "Inter", sans-serif;
 }
+
+.install h2,
+.install p,
+.install-card,
+.step {
+  will-change: transform, opacity;
+}
+
 
 .install-container {
   max-width: 1100px;
@@ -510,7 +521,14 @@ background: #F2F2F2;
   filter: blur(2px);
   opacity: 0.4;
   pointer-events: none;
+  filter: blur(6px);
+  opacity: 0.45;
+  pointer-events: none;
+  transform: scale(0.97);
 }
+
+
+
 
 .stars {
   display: flex;
@@ -593,6 +611,14 @@ background: #F2F2F2;
   font-family: "Inter", sans-serif;
 
 }
+
+.click-section h2,
+.click-section p,
+.info-card,
+.phone {
+  will-change: transform, opacity;
+}
+
 
 .click-container {
   max-width: 1200px;
@@ -755,7 +781,15 @@ top: 30px;
   border-radius: 22px;
   font-family: "Inter", sans-serif;
   overflow: hidden;
+  margin-top: 100px;
 }
+.donate h2,
+.donate p,
+.donate-btn,
+.Donation-phone {
+  will-change: transform, opacity;
+}
+
 
 .donate-inner {
   max-width: 1200px;
@@ -869,6 +903,14 @@ top: 30px;
   padding: 60px 50px;
   overflow: hidden;
 }
+
+.download-section h2,
+.download-section p,
+.store-btn,
+.phone {
+  will-change: transform, opacity;
+}
+
 
 .download-inner {
   max-width: 1200px;

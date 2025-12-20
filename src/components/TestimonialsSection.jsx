@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FaStar } from "react-icons/fa";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   { name: "Emily R", country: "USA", text: "This platform changed the way I stay in touch with my friends and family. The interface is smooth, and I love how easy it is to share my moments!", img: "https://i.pravatar.cc/100?img=32" },
@@ -13,8 +17,31 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(cardsRef.current, {
+        opacity: 0,
+        y: 60,
+        scale: 0.95,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+          once: true,
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="testimonials" className="testimonials">
+    <section id="testimonials" className="testimonials" ref={sectionRef}>
       <div className="testimonials-container">
         <h2>What Our Users Say</h2>
 
@@ -22,6 +49,7 @@ const TestimonialsSection = () => {
           {testimonials.map((item, index) => (
             <div
               key={index}
+              ref={(el) => (cardsRef.current[index] = el)}
               className={`testimonial-card ${
                 index >= 6 ? "blur-card" : ""
               }`}
